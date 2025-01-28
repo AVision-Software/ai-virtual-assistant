@@ -17,7 +17,8 @@ services:
     environment:
       EXAMPLE_PATH: './src/agent'
       #APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-70b-instruct"}
-      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-405b-instruct"}
+      # APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-405b-instruct"}
+      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-8b-instruct"}
       APP_LLM_MODELENGINE: nvidia-ai-endpoints
       APP_LLM_SERVERURL: ${APP_LLM_SERVERURL:-""}
       # Cache name to store user conversation
@@ -109,7 +110,8 @@ services:
     environment:
       EXAMPLE_PATH: './src/analytics'
       #APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-70b-instruct"}
-      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-405b-instruct"}
+      # APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-405b-instruct"}
+      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-8b-instruct"}
       APP_LLM_MODELENGINE: nvidia-ai-endpoints
       APP_LLM_SERVERURL: ${APP_LLM_SERVERURL:-""}
       # Database name to store user conversation/summary
@@ -162,7 +164,8 @@ services:
       APP_VECTORSTORE_NAME: "milvus"
       # url on which llm model is hosted. If "", Nvidia hosted API is used
       #APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-70b-instruct"}
-      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-405b-instruct"}
+      # APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-405b-instruct"}
+      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-8b-instruct"}
       # embedding model engine used for inference, supported type nvidia-ai-endpoints, huggingface
       APP_LLM_MODELENGINE: nvidia-ai-endpoints
       # url on which llm model is hosted. If "", Nvidia hosted API is used
@@ -213,7 +216,8 @@ services:
     environment:
       EXAMPLE_PATH: 'src/retrievers/structured_data'
       #APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-meta/llama-3.1-70b-instruct}
-      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-meta/llama-3.1-405b-instruct}
+      # APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-meta/llama-3.1-405b-instruct}
+      APP_LLM_MODELNAME: ${APP_LLM_MODELNAME:-"meta/llama-3.1-8b-instruct"}
       APP_LLM_MODELENGINE: nvidia-ai-endpoints
       APP_LLM_SERVERURL: ${APP_LLM_SERVERURL:-""}
       APP_EMBEDDINGS_MODELNAME: ${APP_EMBEDDINGS_MODELNAME:-nvidia/nv-embedqa-e5-v5}
@@ -265,7 +269,7 @@ services:
       - "-c"
       - "max_connections=200"
     volumes:
-       - ./init-scripts:/docker-entrypoint-initdb.d  # Mount initialization scripts
+      #  - ./init-scripts:/docker-entrypoint-initdb.d  # Mount initialization scripts
        - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
